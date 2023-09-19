@@ -1,0 +1,19 @@
+<h2 class="text-center">Add your favorite phone</h2>
+
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)">
+  <div>
+    <label >Phone : </label>
+    <input type="text" name="name" ngModel required/>
+  </div>
+  <div>
+    <label >Price : </label>
+    <input type="number" name="price" ngModel required />
+  </div>
+  <button type="submit">Valider</button>
+</form>
+<p>{{message}}</p>
+
+
+<div class="container" *ngFor="let portable of listPortable; ">
+  <h2>{{portable.name}} : {{portable.price}}$</h2>
+</div>
