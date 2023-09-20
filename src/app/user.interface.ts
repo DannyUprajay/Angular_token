@@ -9,5 +9,8 @@ export interface ICredentials {
   "password": number
 }
 
+export interface IToken{
+  token : string
+}
 
 

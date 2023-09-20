@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../login.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {IToken} from "../user.interface";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,10 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class LoginComponent implements OnInit{
 
 
-  constructor(private service: LoginService) {
+  constructor(
+      private service: LoginService,
+      private auth: AuthService
+      ) {
   }
   ngOnInit() {
 
@@ -24,8 +29,12 @@ export class LoginComponent implements OnInit{
   handleSubmit(){
     console.log(this.form.value);
     this.service.login(this.form.value).subscribe(
-      data => console.log(data),
+      (data:IToken)=>{
+          console.log(data.token);
+        this.auth.saveToken(data.token)
+      },
       err => console.log(err),
+
     )
 
   }

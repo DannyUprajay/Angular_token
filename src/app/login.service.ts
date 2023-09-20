@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ICredentials} from "./user.interface";
+import {IToken} from "./user.interface";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class LoginService {
   ) { }
 
 
-  login(credentials:any){
-    return this.http.post<ICredentials>(this.url, credentials);
+  login(credentials:any): Observable<IToken>{
+    return this.http.post<IToken>(this.url, credentials);
 
   }
 
