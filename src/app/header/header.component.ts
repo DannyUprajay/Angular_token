@@ -20,4 +20,8 @@ export class HeaderComponent implements OnInit{
     this.auth.clearToken();
   }
 
+  checkIsLogged(): boolean {
+    return this.auth.isLogged();
+  }
+
 }
